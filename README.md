@@ -28,6 +28,16 @@ Data/Models/Services:
     LLM Inference Service:
       Embedded llama.cpp backend launched inside API container
 
+Licenses: 
+
+This project uses the Meta Llama 3 model, released under the Llama 3 Community License:
+https://ai.meta.com/resources/models-and-libraries/llama-downloads/
+
+The GGUF model file is provided by QuantFactory under under the Llama 3 Community License:
+https://huggingface.co/QuantFactory/Meta-Llama-3-8B-GGUF/blob/main/Meta-Llama-3-8B.Q4_K_M.gguf
+
+This project also uses llama.cpp and llama-cpp-python, both of which use the MIT License.
+.
 ## 3. How to Run (Locally)
 
 ### To Build
