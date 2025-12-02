@@ -59,4 +59,4 @@ Example Players in MongoDB ![]()
 In the future, I want to add data retrieval through Wikipedia, so players don't have to be inputted manually into MongoDB. On top of this, retrieval-augmented generation (RAG) is also a good next step, which can also be done via Wikipedia. I also want to add an add_player endpoint, so that including players in the database becomes easier. Finally, to make the process more visually appealing, I want to be able to deploy this process to the cloud and make it a visible chatbox (potentially through Azure).
 
 ## 7. Links
-GitHub Repo <>
+GitHub Repo <https://github.com/erikh-1126/soccerllm>
