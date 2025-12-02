@@ -17,16 +17,26 @@ def generate_player_summary(player_doc):
     }
     """
     prompt = f"""
-You are a soccer historian. Write a concise, factual career summary.
+def generate_player_summary(player_doc):
+    prompt = f"""
+You are an expert soccer analyst. Your task is to write a concise and factual career summary for the player provided.
+Follow ALL rules below:
 
+- ONLY write about the player's soccer career.
+- Do NOT include any sections, chapters, academic content, essay structure, citations, or unrelated information.
+- Write 4–6 sentences in paragraph form.
+- Do NOT add headings or bullet points.
+- Stay factual, neutral, and concise.
+
+Player Information:
 Name: {player_doc['name']}
 Position: {player_doc['position']}
 Clubs: {", ".join(player_doc['clubs'])}
 Appearances: {player_doc['appearances']}
 Goals: {player_doc['goals']}
 
-Write 4–6 sentences.
-"""
+Write the summary now:
+""".strip()
 
     response = llm(prompt, max_tokens=200)
     return response["choices"][0]["text"].strip()
