@@ -49,7 +49,7 @@ Security/Privacy: No external calls take place here; all inference performed in 
 Ops: All logs are stored in MongoDB, Docker Compose manages a multi-service lifecycle, and some known limitations include a cold start time for the Llama 3 model, a CPU latency of ~300–500ms per request, summaries being cut off early, and a possible chance of hallucinations in some of the responses.
 
 ## 5. Results & Evaluation
-Response Screenshots: ![Response Screenschot](./assets/Screenshot 2025-12-02 014114.png)
+Response Screenshots: ![Response Screenschot](./assets/Screenshot_2025-12-02_014114.png)
 
 Time to Build: ![]()
 
