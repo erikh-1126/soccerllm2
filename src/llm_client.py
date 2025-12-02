@@ -1,39 +1,22 @@
-from llama_cpp import Llama
 import os
-import textwrap
+from llama_cpp import Llama
 
-MODEL_PATH = os.environ.get("MODEL_PATH", "/models/llama3.gguf")
+MODEL_PATH = os.getenv("MODEL_PATH")
 
-_llama = None
-def get_llama():
-    global _llama
-    if _llama is None:
-        _llama = Llama(model_path=MODEL_PATH)
-    return _llama
+llm = Llama(model_path=MODEL_PATH, n_ctx=2048)
 
-def make_prompt(player_name: str, facts: str) -> str:
-    return textwrap.dedent(f"""
-    You are a helpful soccer historian. Using only the provided facts, write a concise, factual
-    career summary for the player. Do NOT hallucinate facts beyond the provided facts.
+def generate_summary(player_doc):
+    prompt = f"""
+    You are a soccer historian. Write a factual, concise career overview.
 
-    Player: {player_name}
+    Name: {player_doc['name']}
+    Position: {player_doc['position']}
+    Clubs: {", ".join(player_doc['clubs'])}
+    Appearances: {player_doc['appearances']}
+    Goals: {player_doc['goals']}
 
-    Facts (from public sources):
-    {facts}
+    Write 5–7 sentences.
+    """
 
-    Output JSON with fields:
-    - biography: short paragraph summary (1-3 sentences)
-    - teams: list of major clubs & years if present in facts
-    - achievements: bullet list (short)
-    - style_of_play: short phrase/one sentence or "N/A" if not present
-
-    Return ONLY valid JSON.
-    """).strip()
-
-def generate_summary(player_name: str, facts: str, max_tokens: int = 512):
-    llama = get_llama()
-    prompt = make_prompt(player_name, facts)
-    # synchronous completion
-    resp = llama.create(prompt=prompt, max_tokens=max_tokens, temperature=0.0)
-    text = resp.get("choices", [{}])[0].get("text", "").strip()
-    return text
+    output = llm(prompt, max_tokens=300, stop=["###"])
+    return output["choices"][0]["text"].strip()
