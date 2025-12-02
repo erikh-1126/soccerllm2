@@ -10,13 +10,16 @@ Course Concepts: This project demonstrates core course concepts, including  REST
 Architecture Diagram: ![Architecture]()
 
 Data/Models/Services: 
+
   Data: Stored in MongoDB
       Collections: players — static soccer player metadata 
                    requests — logs each summarization request
+                   
   Models: Llama 3 8B Instruct (GGUF quantized Q4_K_M)
     Size: ~4 GB
     Source: Meta / QuantFactory (GGUF conversion on Hugging Face)
     Format: GGUF, run with llama-cpp-python
+    
   Services: 
     Flask API:
       Routes: /summarize, /health
@@ -41,4 +44,17 @@ Why this Concept: There were many different alternatives I could've taken while 
 
 Tradeoffs: Using a CPU for inference instead of a GPU makes it portable, but in turn makes it slower to perform. Using a GGUF model to perform the summaries reduces the size of the file, but its accuracy isn't the best. Picking MongoDB over SQLite makes things more flexible, but it is much heavier than SQLite. Finally, using Docker makes the process more reproducible, but it takes longer to pull off. 
 
-Security/Privacy
+Security/Privacy: No external calls take place here; all inference performed in the summary is local, no personal data is stored at all, and every input is validated by the fact that any player name inputted must match a name inputted into the database.
+
+Ops: All logs are stored in MongoDB, Docker Compose manages a multi-service lifecycle, and some known limitations include a cold start time for the Llama 3 model, a CPU latency of ~300–500ms per request, summaries being cut off early, and a possible chance of hallucinations in some of the responses.
+
+## 5. Results & Evaluation
+Response Screenshots: ![]()
+Time to Build: ![]()
+Example Players in MongoDB ![]()
+
+## 6. What's Next
+In the future, I want to add data retrieval through Wikipedia, so players don't have to be inputted manually into MongoDB. On top of this, retrieval-augmented generation (RAG) is also a good next step, which can also be done via Wikipedia. I also want to add an add_player endpoint, so that including players in the database becomes easier. Finally, to make the process more visually appealing, I want to be able to deploy this process to the cloud and make it a visible chatbox (potentially through Azure).
+
+## 7. Links
+GitHub Repo <>
