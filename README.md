@@ -50,7 +50,9 @@ Ops: All logs are stored in MongoDB, Docker Compose manages a multi-service life
 
 ## 5. Results & Evaluation
 Response Screenshots: ![]()
+
 Time to Build: ![]()
+
 Example Players in MongoDB ![]()
 
 ## 6. What's Next
