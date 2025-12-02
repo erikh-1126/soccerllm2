@@ -6,14 +6,16 @@ Many soccer fans, myself included, want to easily look at career retrospectives 
 
 ## 2. System Overview
 Course Concepts: This project demonstrates core course concepts, including  REST API design (Flask), LLM inference serving (llama-cpp-python), and database integration (MongoDB).
+
 Architecture Diagram: ![Architecture]()
+
 Data/Models/Services: 
   Data: Stored in MongoDB
       Collections: players — static soccer player metadata 
                    requests — logs each summarization request
   Models: Llama 3 8B Instruct (GGUF quantized Q4_K_M)
     Size: ~4 GB
-    Source: Meta / TheBloke (GGUF conversion)
+    Source: Meta / QuantFactory (GGUF conversion on Hugging Face)
     Format: GGUF, run with llama-cpp-python
   Services: 
     Flask API:
@@ -29,4 +31,14 @@ Data/Models/Services:
 docker build -t soccer-llm .
 
 ### To Run
+docker run -p 5000:5000 soccer-llm
 
+### Health Check
+curl http://localhost:5000/health
+
+## 4. Design Decisions
+Why this Concept: There were many different alternatives I could've taken while making this LLM. For example, I could have used the OpenAI API; however, it isn't reproducible offline. GPU-based inference models also came up in my head, but they aren't necessarily portable, making them harder to grade. SQLite could be used as an alternative to MongoDB, but it is less flexible for structured documents. Finally, FastAPI was also considered instead of Flask, but Flask is just simpler to pull off.
+
+Tradeoffs: Using a CPU for inference instead of a GPU makes it portable, but in turn makes it slower to perform. Using a GGUF model to perform the summaries reduces the size of the file, but its accuracy isn't the best. Picking MongoDB over SQLite makes things more flexible, but it is much heavier than SQLite. Finally, using Docker makes the process more reproducible, but it takes longer to pull off. 
+
+Security/Privacy
