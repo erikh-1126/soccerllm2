@@ -1,3 +1,9 @@
+from llama_cpp import Llama
+
+MODEL_PATH = "models/Meta-Llama-3-8B.Q4_K_M.gguf"
+
+llm = Llama(model_path=MODEL_PATH, n_ctx=2048)
+
 def generate_player_summary(player_doc):
     prompt = f"""
 You are an expert soccer analyst. Your task is to write a concise and factual career summary for the player provided.
