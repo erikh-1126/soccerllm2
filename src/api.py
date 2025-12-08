@@ -4,7 +4,7 @@ from llm_client import generate_player_summary
 
 app = Flask(__name__)
 
-client = MongoClient("mongodb://host.docker.internal:27017")
+mongodb://localhost:27017
 db = client["soccerdb"]
 
 @app.route("/summarize", methods=["POST"])
