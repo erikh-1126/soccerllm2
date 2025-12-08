@@ -1,11 +1,11 @@
+import os
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
 from llm_client import generate_player_summary
-import os
 
 app = Flask(__name__)
 
-mongo_uri = os.getenv("MONGO_URI", "mongodb://mongo:27017")
+mongo_uri = "mongodb://localhost:27017"
 client = MongoClient(mongo_uri)
 db = client["soccerdb"]
 
