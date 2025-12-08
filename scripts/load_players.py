@@ -29,7 +29,13 @@ player_docs = [
     {"name": "Pedri", "position": "Midfielder", "clubs": ["Las Palmas", "Barcelona"], "appearances": 150, "goals": 20},
     {"name": "Rodri", "position": "Midfielder", "clubs": ["Villarreal", "Atlético", "Man City"], "appearances": 300, "goals": 25},
     {"name": "Son Heung-min", "position": "Forward", "clubs": ["Hamburg", "Leverkusen", "Tottenham"], "appearances": 500, "goals": 200},
-    {"name": "Jude Bellingham", "position": "Midfielder", "clubs": ["Birmingham", "Dortmund", "Real Madrid"], "appearances": 200, "goals": 50}
+    {"name": "Jude Bellingham", "position": "Midfielder", "clubs": ["Birmingham", "Dortmund", "Real Madrid"], "appearances": 200, "goals": 50},
+    {"name": "Zinedine Zidane", "position": "Midfielder", "clubs": ["Cannes", "Bordeaux", "Juventus", "Real Madrid"], "appearances": 700, "goals": 150},
+    {"name": "Ronaldinho", "position": "Forward", "clubs": ["Gremio", "PSG", "Barcelona", "AC Milan"], "appearances": 600, "goals": 250},
+    {"name": "Ronaldo Nazario", "position": "Forward", "clubs": ["Cruzeiro", "PSV", "Barcelona", "Inter Milan", "Real Madrid", "AC Milan"], "appearances": 500, "goals": 350},
+    {"name": "Thierry Henry", "position": "Forward", "clubs": ["Monaco", "Juventus", "Arsenal", "Barcelona", "New York Red Bulls"], "appearances": 800, "goals": 400},
+    {"name": "Andres Iniesta", "position": "Midfielder", "clubs": ["Barcelona", "Vissel Kobe"], "appearances": 900, "goals": 100},
+    {"name": "Xavi Hernandez", "position": "Midfielder", "clubs": ["Barcelona", "Al Sadd"], "appearances": 950, "goals": 110},
 ]
 
 result = players.insert_many(player_docs)
