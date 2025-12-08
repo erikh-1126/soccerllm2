@@ -5,7 +5,7 @@ from llm_client import generate_player_summary
 
 app = Flask(__name__)
 
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
+MONGO_URI=mongodb://localhost:27017/soccerdb
 client = MongoClient(MONGO_URI)
 db = client["soccerdb"]
 
